@@ -2,16 +2,16 @@
 
 # エンティティ
 
-| Entity                      | 主キー                         | 主属性例                                                       | 種別 (Resource / Event) |
-| --------------------------- | ------------------------------ | -------------------------------------------------------------- | ----------------------- |
-| team                        | team_id                        | name, display_id                                               | Resource                |
-| feed                        | feed_id                        | url, etag, last_modified                                       | Resource                |
-| content                     | content_id                     | canonical_url, title, type                                     | Resource                |
-| feed_item                   | feed_item_id                   | feed_id, content_id, guid, published_at                        | Resource                |
-| feed_subscription           | feed_subscription_id           | team_id, feed_id, name                                         | Resource                |
-| feed_collection             | feed_collection_id             | team_id, name, description                                     | Resource                |
-| feed_collected_subscription | feed_collected_subscription_id | feed_collection_id, feed_subscription_id                       | Resource                |
-| destination                 | destination_id                 | team_id, platform, webhook_enc                                 | Resource                |
-| delivery_rule               | delivery_rule_id               | subscription_id, destination_id, schedule, template_id, status | Resource                |
-| delivery_event              | delivery_event_id              | delivery_rule_id, feed_item_id, sent_at, status, response      | Event                   |
-| feed_refresh_event          | refresh_event_id               | feed_id, checked_at, status, response_time_ms                  | Event                   |
+| Entity                      | 責務 (役割・存在理由)                                                                | 種別 (Resource / Event) |
+| --------------------------- | ------------------------------------------------------------------------------------ | ----------------------- |
+| team                        | SaaS テナント境界を表す組織または個人。すべての設定・権限の最上位単位                | Resource                |
+| feed                        | 外部フィード情報源 (RSS/Atom)。URL をキーに一意管理しキャッシュを共有                | Resource                |
+| content                     | フィードが指す実体コンテンツ (記事・動画・リポジトリなど)。正規 URL で一意化         | Resource                |
+| feed_item                   | Feed 内の単一エントリ。feed と content を結び公開メタ (GUID, published_at) を保持    | Resource                |
+| feed_subscription           | Team が特定 Feed を購読する設定。後続ルーティングの起点                              | Resource                |
+| feed_collection             | Team 内で複数 Subscription を束ねる論理グループ (例: #frontenders)                   | Resource                |
+| feed_collected_subscription | feed_collection と feed_subscription のメンバーシップを表す中間リソース              | Resource                |
+| destination                 | Team 専有の通知先エンドポイント (Discord/Slack/LINE など) とシークレット情報         | Resource                |
+| delivery_rule               | feed_subscription と destination を結び、スケジュール・テンプレなど配信条件を定義    | Resource                |
+| delivery_event              | delivery_rule が発火し、単一 feed_item を送信した結果 (成功/失敗・レスポンス) を記録 | Event                   |
+| feed_refresh_event          | Feed の更新チェックを実行した出来事。レスポンス時間やステータスを記録                | Event                   |
