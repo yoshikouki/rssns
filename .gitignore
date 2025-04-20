@@ -15,6 +15,8 @@
 
 # next.js
 /.next/
+# Workaround for https://github.com/biomejs/biome/issues/5641
+.next
 /out/
 
 # production
