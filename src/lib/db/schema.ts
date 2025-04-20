@@ -25,6 +25,24 @@ export const users = pgTable("users", {
   image: text("image"),
 });
 
+export const teamMembership = pgTable("team_memberships", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  teamId: text("team_id")
+    .notNull()
+    .references(() => team.id, { onDelete: "cascade" }),
+  userId: text("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  role: text("role").notNull().default("member"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
+});
+
 export const accounts = pgTable(
   "accounts",
   {
