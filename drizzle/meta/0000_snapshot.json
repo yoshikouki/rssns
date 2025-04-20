@@ -1,7 +1,7 @@
 {
   "id": "c659d562-2c15-438d-808e-b31db6b30ccb",
   "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "6",
+  "version": "7",
   "dialect": "postgresql",
   "tables": {
     "public.team": {
@@ -50,7 +50,10 @@
           "nullsNotDistinct": false,
           "columns": ["display_id"]
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     }
   },
   "enums": {},
@@ -59,5 +62,9 @@
     "columns": {},
     "schemas": {},
     "tables": {}
-  }
+  },
+  "sequences": {},
+  "policies": {},
+  "views": {},
+  "roles": {}
 }
