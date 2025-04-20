@@ -4,19 +4,24 @@ import { cn } from "@/lib/utils";
 import { MainNavigation } from "./main-navigation";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: "RSSNS",
-  description: "RSS News Notification Service",
+  title: "RSSNS - Modern RSS Reader",
+  description:
+    "A modern RSS news notification service to keep you updated with your favorite sources",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={cn(inter.className, "h-full")}>
+    <html lang="en" className={cn("h-full antialiased", inter.variable)}>
+      <body className={cn(inter.className, "relative h-full bg-background font-sans")}>
         <MainNavigation />
-        <main>{children}</main>
+        <main className="relative flex min-h-screen flex-col">{children}</main>
       </body>
     </html>
   );
