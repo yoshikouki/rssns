@@ -1,1 +1,0 @@
-ALTER TABLE "team" RENAME COLUMN "team_id" TO "id";

@@ -10,7 +10,7 @@
     "lint": "biome check .",
     "format": "biome check --write .",
     "format:unsafe": "biome check --write --unsafe .",
-    "db:generate": "drizzle-kit generate --dialect postgresql --schema ./drizzle.config.ts --out ./drizzle --name",
+    "db:generate": "drizzle-kit generate --config ./drizzle.config.ts --name",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
