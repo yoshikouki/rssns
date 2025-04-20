@@ -1,8 +1,8 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 import Discord from "next-auth/providers/discord";
-import { db } from "./db";
-import { accounts, sessions, users, verificationTokens } from "./db/schema";
+import { db } from "@/lib/db";
+import { accounts, sessions, users, verificationTokens } from "@/lib/db/schema";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db, {
