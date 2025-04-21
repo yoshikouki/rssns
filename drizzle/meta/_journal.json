@@ -8,6 +8,13 @@
       "when": 1745123779068,
       "tag": "0000_init_db",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1745239148658,
+      "tag": "0001_create_team_memberships",
+      "breakpoints": true
     }
   ]
 }
